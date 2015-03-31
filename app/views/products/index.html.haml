@@ -1,7 +1,9 @@
 %h2
   All products
+%ul
   - @products.each do |prod|
-    = prod.title
-    = prod.description
-    = prod.price
-    = prod.sku
+    %li
+      = link_to prod.title, product_path(prod)
+      %p= prod.description
+      %span.price.red= prod.price
+      %p= prod.sku
