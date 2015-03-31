@@ -1,0 +1,21 @@
+= simple_form_for @product do |p|
+  - if @product.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@product.errors.count, "error")
+        prohibitet this product for being saved:
+    %ul
+      - @product.errors.full_messages.each do |msg|
+        %li
+          = msg
+
+  .form-group
+    = p.input :title
+  .form-group
+    = p.label :description
+    = p.text_area :description
+  .form-group
+    = p.input :price
+  .form-group
+    = p.input :sku
+    = p.submit

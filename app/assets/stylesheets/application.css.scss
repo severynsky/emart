@@ -1,4 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "products"
+@import "products";
 
+.clear{
+  clear: both;
+}

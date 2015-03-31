@@ -13,6 +13,7 @@ gem 'bootstrap-sass', '~> 3.3.4'
 gem 'sass-rails', '>= 3.2'
 gem 'haml-rails'
 gem 'pry-rails'
+gem 'simple_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
