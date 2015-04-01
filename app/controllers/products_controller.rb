@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
+  before_action :find_categories
 
   def new
     @product = Product.new
@@ -18,10 +19,12 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @categories = Category.all
   end
 
   def update
     if @product.update(product_params)
+      # binding.pry
       redirect_to @product, notice: "product has been updated"
     end
   end
@@ -39,10 +42,13 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :description, :price, :sku)
+    params.require(:product).permit(:title, :description, :price, :sku, :category_id)
   end
 
   def find_product
     @product = Product.find(params[:id])
+  end
+  def find_categories
+    @categories = Category.all
   end
 end

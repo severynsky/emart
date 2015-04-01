@@ -6,4 +6,9 @@
       = link_to prod.title, product_path(prod)
       %p= prod.description
       %span.price.red= prod.price
-      %p= prod.sku
+      %p
+        sku:
+        = prod.sku
+        category:
+        %b
+          = prod.category.title

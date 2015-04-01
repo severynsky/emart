@@ -1,4 +1,4 @@
-= simple_form_for @category do |cat|
+= bootstrap_form_for @category do |cat|
   - if @category.errors.any?
     #error_explanation
       %h2
@@ -9,5 +9,5 @@
         %li
           = msg
   .form-group
-    = cat.input :title
+    = cat.text_field :title
     = cat.submit

@@ -11,12 +11,14 @@
   - if @product.category_id
     %p
       category:
-      = @product.category_id
+      %b
+        = @product.category.title
   - else
     %p
       currently
       %b
         no category
+-#- binding.pry
 .clear
 = link_to 'edit', edit_product_path
 = link_to 'back', products_path
