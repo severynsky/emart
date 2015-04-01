@@ -1,0 +1,13 @@
+= simple_form_for @category do |cat|
+  - if @category.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@category.errors.count, "error")
+        prohibitet this category for being saved:
+    %ul
+      - @category.errors.full_messages.each do |msg|
+        %li
+          = msg
+  .form-group
+    = cat.input :title
+    = cat.submit

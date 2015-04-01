@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
+    @product = Product.create(product_params)
     if @product.save
       redirect_to @product, notice: 'Product has been created!'
     else

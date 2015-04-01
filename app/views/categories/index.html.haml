@@ -1,0 +1,9 @@
+%h3
+  All Categories:
+%ul
+  - @categories.each do |cat|
+    %li
+      = cat.title
+
+= link_to 'new', new_category_path
+= link_to 'main', products_path
