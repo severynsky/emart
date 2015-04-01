@@ -1,0 +1,7 @@
+.col-xs-6.col-xs-offset-3
+  %h1
+    = @product.title
+    edit page
+  = render 'form'
+  = link_to 'show', product_path
+  = link_to 'back', products_path

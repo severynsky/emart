@@ -9,4 +9,6 @@
     %span.price.red
       = @product.price
 .clear
+= link_to 'edit', edit_product_path
 = link_to 'back', products_path
+= link_to 'delete', product_path, method: :delete, data: {confirm: "Are You sure?"}

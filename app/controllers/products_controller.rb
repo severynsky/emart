@@ -21,6 +21,9 @@ class ProductsController < ApplicationController
   end
 
   def update
+    if @product.update(product_params)
+      redirect_to @product, notice: "product has been updated"
+    end
   end
 
   def index
@@ -28,6 +31,9 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    @product.destroy
+    flash[:notice] = "You have successfully delete the product."
+    redirect_to 'products#index'
   end
 
   private
