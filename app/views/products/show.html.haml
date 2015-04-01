@@ -1,0 +1,12 @@
+.col-xs-10.col-xs-offset-1
+  %h3
+    = @product.title
+    page
+  %p
+    = @product.description
+  %b
+    Price:
+    %span.price.red
+      = @product.price
+.clear
+= link_to 'back', products_path
