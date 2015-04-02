@@ -15,6 +15,7 @@ gem 'haml-rails'
 gem 'pry-rails'
 gem 'simple_form'
 gem 'bootstrap_form'
+gem 'devise'
 
 
 

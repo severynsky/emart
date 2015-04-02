@@ -1,9 +1,11 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!
   before_action :find_product, only: [:show, :edit, :update, :destroy]
   before_action :find_categories
 
   def new
     @product = Product.new
+    $show_counter = nil
   end
 
   def create
@@ -16,6 +18,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    $show_counter != nil ? $show_counter += 1 : $show_counter = 1
   end
 
   def edit
