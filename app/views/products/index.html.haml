@@ -10,5 +10,4 @@
         sku:
         = prod.sku
         category:
-        %b
-          = prod.category.title
+        %b{class: "#{prod.category.title.downcase}"}= prod.category.title
