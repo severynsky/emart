@@ -3,6 +3,9 @@
     = @product.title
     page
   %p
+    -if @product.image
+      = image_tag(@product.image.path)
+  %p
     = @product.description
   %b
     Price:

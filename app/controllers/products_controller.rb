@@ -5,6 +5,8 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @image = @product.create_image
+    # binding.pry
     $show_counter = nil
   end
 
@@ -23,11 +25,14 @@ class ProductsController < ApplicationController
 
   def edit
     @categories = Category.all
+    if @product.image_id == nil
+      @image = @product.create_image
+    end
   end
 
   def update
     if @product.update(product_params)
-      # binding.pry
+      binding.pry
       redirect_to @product, notice: "product has been updated"
     end
   end
@@ -45,7 +50,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :description, :price, :sku, :category_id)
+    params.require(:product).permit(:title, :description, :price, :sku, :category_id, image_attributes: [:path, :id])
   end
 
   def find_product

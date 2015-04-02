@@ -1,4 +1,4 @@
-= bootstrap_form_for @product do |p|
+= bootstrap_form_for @product, :html => { :multipart => true }  do |p|
   - if @product.errors.any?
     #error_explanation
       %h2
@@ -14,5 +14,7 @@
     = p.text_area :description, :rows => 10
     = p.text_field :price
     = p.text_field :sku
+    = p.fields_for :image do |img|
+      = img.text_field :path
     = p.collection_select :category_id, Category.all, :id, :title, label: "Select category:"
     = p.submit
