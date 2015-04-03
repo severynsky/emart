@@ -4,7 +4,7 @@
     page
   %p
     -if @product.image
-      = image_tag(@product.image.path)
+      = image_tag(@product.image.picture.url)
   %p
     = @product.description
   %b

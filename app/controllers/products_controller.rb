@@ -20,6 +20,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+      binding.pry
     $show_counter != nil ? $show_counter += 1 : $show_counter = 1
   end
 
@@ -50,7 +51,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :description, :price, :sku, :category_id, image_attributes: [:path, :id])
+    params.require(:product).permit(:title, :description, :price, :sku, :category_id, image_attributes: [:picture])
   end
 
   def find_product

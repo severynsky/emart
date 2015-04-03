@@ -3,6 +3,6 @@ class Product < ActiveRecord::Base
   validates :sku, uniqueness: true
   belongs_to :category
   has_one :image, dependent: :destroy
-  accepts_nested_attributes_for :image, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :image
 
 end
