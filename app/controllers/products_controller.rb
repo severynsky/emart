@@ -20,7 +20,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-      binding.pry
     $show_counter != nil ? $show_counter += 1 : $show_counter = 1
   end
 
@@ -40,6 +39,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+    # binding.pry
   end
 
   def destroy

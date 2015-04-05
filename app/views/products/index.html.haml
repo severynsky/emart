@@ -4,6 +4,8 @@
   - @products.each do |prod|
     %li
       = link_to prod.title, product_path(prod)
+      - if prod.image
+        = image_tag prod.image.picture.url(:thumb), class: "thumbnail"
       %p= prod.description
       %span.price.red= prod.price
       %p
