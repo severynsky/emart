@@ -25,14 +25,13 @@ class ProductsController < ApplicationController
 
   def edit
     @categories = Category.all
-    if @product.image_id == nil
+    if @product.image == nil
       @image = @product.create_image
     end
   end
 
   def update
     if @product.update(product_params)
-      binding.pry
       redirect_to @product, notice: "product has been updated"
     end
   end

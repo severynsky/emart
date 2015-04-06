@@ -15,6 +15,9 @@
     = p.text_field :price
     = p.text_field :sku
     = p.fields_for :image do |img|
+      - if @product.image
+        %b Existing image:
+        = image_tag @product.image.picture.url(:thumb), class: "thumbnail"
       = img.file_field :picture
     = p.collection_select :category_id, Category.all, :id, :title, label: "Select category:"
     = p.submit
