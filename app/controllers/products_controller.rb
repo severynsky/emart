@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_product, only: [:show, :edit, :update, :destroy]
-  before_action :find_categories
+  before_action :find_categories, only: [:show, :edit, :update, :destroy]
 
   def new
     @product = Product.new
@@ -24,9 +24,8 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @categories = Category.all
     if @product.image == nil
-      @image = @product.create_image
+      @product.create_image
     end
   end
 

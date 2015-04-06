@@ -17,6 +17,7 @@ gem 'simple_form'
 gem 'bootstrap_form'
 gem 'devise'
 gem "paperclip", "~> 4.2"
+gem 'bootsy'
 
 
 
