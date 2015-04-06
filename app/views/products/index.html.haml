@@ -1,15 +1,17 @@
 %h2
   All products
-%ul
+%ul{class: "products-list"}
   - @products.each do |prod|
-    %li
+    %li{class: "col-xs-3"}
       = link_to prod.title, product_path(prod)
       - if prod.image
-        = image_tag prod.image.picture.url(:thumb), class: "thumbnail"
-      %p= prod.description
+        = image_tag prod.image.picture.url(:medium), class: "thumbnail"
+      -#%p= prod.description
       %span.price.red= prod.price
       %p
         sku:
         = prod.sku
         category:
         %b{class: "#{prod.category.title.downcase}"}= prod.category.title
+      %button{class: "btn btn-info"}
+        buy
