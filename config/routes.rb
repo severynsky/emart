@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :image
   end
   resources :categories
+  resources :carts
+  resources :product_records
   root 'intro#hello'
 
 end
