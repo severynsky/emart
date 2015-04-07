@@ -3,7 +3,7 @@
 %ul{class: "products-list"}
   - @products.each do |prod|
     %li{class: "col-xs-3"}
-      = link_to prod.title, product_path(prod)
+      %h3= prod.title
       - if prod.image
         = image_tag prod.image.picture.url(:medium), class: "thumbnail"
       -#%p= prod.description
@@ -13,5 +13,4 @@
         = prod.sku
         category:
         %b{class: "#{prod.category.title.downcase}"}= prod.category.title
-      %button{class: "btn btn-info"}
-        buy
+      = link_to "view", product_path(prod),class: "btn btn-info"

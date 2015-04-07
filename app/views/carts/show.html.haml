@@ -1,0 +1,12 @@
+%h3
+	Cart #
+	= @cart.id
+%ul.product-records-list
+- @cart.product_records.each do |prod_rec|
+	= image_tag prod_rec.product.image.picture.url(:thumb), class: "thumbnail"
+	%p
+		= prod_rec.product.title
+	%p
+		= prod_rec.product.category.title
+	%p.red
+		= prod_rec.product.price

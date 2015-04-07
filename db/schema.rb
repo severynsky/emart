@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150407085016) do
+ActiveRecord::Schema.define(version: 20150407093928) do
 
   create_table "bootsy_image_galleries", force: :cascade do |t|
     t.integer  "bootsy_resource_id"
@@ -48,6 +48,16 @@ ActiveRecord::Schema.define(version: 20150407085016) do
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
   end
+
+  create_table "product_records", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "cart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "product_records", ["cart_id"], name: "index_product_records_on_cart_id"
+  add_index "product_records", ["product_id"], name: "index_product_records_on_product_id"
 
   create_table "products", force: :cascade do |t|
     t.string   "title"

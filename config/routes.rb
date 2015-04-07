@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'product_records/create'
+
+  get 'product_records/destroy'
+
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   devise_for :users
   get 'intro/hello'
