@@ -12,6 +12,8 @@
           = link_to 'new category', new_category_path
         %li
           = $show_counter
+        %li
+          = link_to "cart", cart_path(@cart)
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li=link_to "#{current_user.email}", root_path

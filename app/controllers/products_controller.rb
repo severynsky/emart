@@ -1,7 +1,13 @@
 class ProductsController < ApplicationController
+
+  include CurrentCart
+  include Devise::Controllers::Helpers
+
   before_action :authenticate_user!
   before_action :find_product, only: [:show, :edit, :update, :destroy]
   before_action :find_categories, only: [:show, :edit, :update, :destroy]
+  before_action :find_cart, only: [:index]
+
 
   def new
     @product = Product.new
@@ -55,6 +61,11 @@ class ProductsController < ApplicationController
   def find_product
     @product = Product.find(params[:id])
   end
+
+  def find_cart
+    @cart = Cart.find_by(id: session[:cart_id])
+  end
+
   def find_categories
     @categories = Category.all
   end
