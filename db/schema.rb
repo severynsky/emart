@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150407093928) do
+ActiveRecord::Schema.define(version: 20150414193910) do
 
   create_table "bootsy_image_galleries", force: :cascade do |t|
     t.integer  "bootsy_resource_id"
@@ -51,9 +51,10 @@ ActiveRecord::Schema.define(version: 20150407093928) do
 
   create_table "product_records", force: :cascade do |t|
     t.integer  "product_id"
-    t.integer  "cart_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.intweger  "cart_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "quantity",   default: 1
   end
 
   add_index "product_records", ["cart_id"], name: "index_product_records_on_cart_id"

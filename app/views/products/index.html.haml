@@ -1,16 +1,17 @@
 %h2
   All products
-%ul{class: "products-list"}
-  - @products.each do |prod|
-    %li{class: "col-xs-3"}
-      %h3= prod.title
-      - if prod.image
-        = image_tag prod.image.picture.url(:medium), class: "thumbnail"
-      -#%p= prod.description
-      %span.price.red= prod.price
-      %p
-        sku:
-        = prod.sku
-        category:
-        %b{class: "#{prod.category.title.downcase}"}= prod.category.title
-      = link_to "view", product_path(prod),class: "btn btn-info"
+.row
+  %ul{class: "products-list"}
+    - @products.each do |prod|
+      %li{class: "product-item"}
+        %h3= prod.title
+        - if prod.image
+          = image_tag prod.image.picture.url(:medium), class: "thumbnail"
+        -#%p= prod.description
+        %span.price.red= prod.price
+        %p
+          sku:
+          = prod.sku
+          category:
+          %b{class: "#{prod.category.title.downcase}"}= prod.category.title
+        = link_to "view", product_path(prod),class: "btn btn-info"

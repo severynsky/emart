@@ -4,7 +4,16 @@ class ProductRecordsController < ApplicationController
 
   def create
   	product = Product.find(params[:product_id])
-  	@cart.product_records.build(product: product).save
+    # binding.pry
+    @product_record = @cart.product_records.find_by(product_id: (params[:product_id]))
+    if @product_record != nil
+      @product_record.quantity += 1
+      @product_record.save
+      redirect_to product_path(product), notice: 'Quantity increased!'
+    else
+  	  @cart.product_records.build(product: product).save
+      redirect_to cart_path(session[:cart_id])
+    end
   end
 
   def destroy

@@ -3,11 +3,10 @@ class ProductsController < ApplicationController
   include CurrentCart
   include Devise::Controllers::Helpers
 
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :find_product, only: [:show, :edit, :update, :destroy]
   before_action :find_categories, only: [:show, :edit, :update, :destroy]
-  before_action :find_cart, only: [:index]
-
+  before_action :find_cart
 
   def new
     @product = Product.new
@@ -43,6 +42,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+    @user = current_user
     # binding.pry
   end
 

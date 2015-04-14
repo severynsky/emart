@@ -12,13 +12,14 @@
           = link_to 'new category', new_category_path
         %li
           = $show_counter
-        %li
-          = link_to "cart", cart_path(@cart)
+        - if @cart != nil
+          %li
+            = link_to "cart", cart_path(session[:cart_id])
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li=link_to "#{current_user.email}", root_path
           %li= link_to 'edit',edit_user_registration_path
-          %li= link_to 'exit', destroy_user_session_path
+          %li= link_to 'exit', destroy_user_session_path, method: :delete
         -else
           %li= link_to "sign in", new_user_session_path
           %li= link_to "sign up", new_user_registration_path
