@@ -12,7 +12,9 @@ class ProductRecordsController < ApplicationController
       redirect_to product_path(product), notice: 'Quantity increased!'
     else
   	  @cart.product_records.build(product: product).save
-      redirect_to cart_path(session[:cart_id])
+      # redirect_to cart_path(session[:cart_id])
+      redirect_to product_path(product)
+      flash[:notice] = 'Item was added to cart'
     end
   end
 

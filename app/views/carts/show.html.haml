@@ -15,3 +15,6 @@
         %p
           quantity:
           = prod_rec.quantity
+  .clear
+  %hr
+  = link_to "empty cart", cart_path, method: :delete, data: {confirm: 'Are you sure?'}

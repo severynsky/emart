@@ -10,6 +10,10 @@ class CartsController < ApplicationController
   end
 
   def destroy
+    binding.pry
+    @cart.product_records.delete_all
+    flash[:notice] = "You have successfully delete the product."
+    redirect_to 'products#index'
   end
 
   private
