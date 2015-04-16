@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :image
   end
   resources :categories
+  resources :users_profile
   resources :carts
   resources :product_records
   root 'intro#hello'

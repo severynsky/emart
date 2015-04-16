@@ -1,0 +1,25 @@
+.col-xs-8.col-xs-offset-2
+  %h4
+    this is 
+    %b 
+      = @user.full_name
+    page
+    %hr
+  %p 
+    email:
+    = @user.email
+  %p
+    adress:
+    = @user.adress
+  %p 
+    ZIP:
+    = @user.zip
+  %p
+    phone number:
+    = @user.phone
+  %p
+    role:
+    = @user.role
+  = link_to "log out", destroy_user_session_path, method: :delete 
+  |
+  = link_to "edit profile", edit_user_registration_path
