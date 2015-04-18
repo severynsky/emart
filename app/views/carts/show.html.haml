@@ -1,15 +1,13 @@
 .col-xs-8.col-xs-offset-2.cart-show
   %h3
-    Cart #
-    = @cart.id
+    Your Cart
+  %hr
   %ul.product-records-list
     - @cart.product_records.each do |prod_rec|
       %li.cart-item.col-xs-3
         = image_tag prod_rec.product.image.picture.url(:thumb), class: "thumbnail"
         %p
           = prod_rec.product.title
-        %p
-          = prod_rec.product.category.title
         %p.red
           = prod_rec.total_price
         %p
@@ -19,10 +17,12 @@
         |
         = link_to "less", decr_quantity_product_records_path(product_rec_id:(prod_rec.id)), method: :post
   .clear
+  %hr
   %h4.pull-right
     Cart total:
     %span.red
       = @cart.total_cart_price.round(2)
   .clear
   %hr
-  = link_to "empty cart", cart_path, method: :delete, data: {confirm: 'Are you sure?'}
+  = button_to "empty cart", cart_path, method: :delete, data: {confirm: 'Are you sure?'}, class: ("btn btn-danger pull-left")
+  = button_to "Proceed to checkout", cart_path, method: :delete, data: {confirm: 'Are you sure?'}, class: ("btn btn-success pull-right")
