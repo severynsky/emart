@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150415084059) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "bootsy_image_galleries", force: :cascade do |t|
     t.integer  "bootsy_resource_id"
     t.string   "bootsy_resource_type"
@@ -57,8 +60,8 @@ ActiveRecord::Schema.define(version: 20150415084059) do
     t.integer  "quantity",   default: 1
   end
 
-  add_index "product_records", ["cart_id"], name: "index_product_records_on_cart_id"
-  add_index "product_records", ["product_id"], name: "index_product_records_on_product_id"
+  add_index "product_records", ["cart_id"], name: "index_product_records_on_cart_id", using: :btree
+  add_index "product_records", ["product_id"], name: "index_product_records_on_product_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "title"
@@ -91,7 +94,9 @@ ActiveRecord::Schema.define(version: 20150415084059) do
     t.integer  "phone"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "product_records", "carts"
+  add_foreign_key "product_records", "products"
 end
