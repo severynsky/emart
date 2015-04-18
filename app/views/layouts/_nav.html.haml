@@ -1,11 +1,15 @@
 %nav.navbar.navbar-default
-  .container-fluid
+  .container
     .collapse.navbar-collapse#bs-example-navbar-collapse-1
       %ul.nav.navbar-nav
         %li
           = link_to 'intro', root_path
         %li
           = link_to 'home', products_path
+        - if current_user.role == "admin"
+          %li
+            %a.red
+              user is admin
         %li
           = link_to 'new product', new_product_path
         %li

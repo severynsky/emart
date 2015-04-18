@@ -15,6 +15,9 @@
         %p
           quantity:
           = prod_rec.quantity
+        = link_to "more", incr_quantity_product_records_path(product_rec_id:(prod_rec.id)), method: :post
+        |
+        = link_to "less", decr_quantity_product_records_path(product_rec_id:(prod_rec.id)), method: :post
   .clear
   %hr
   = link_to "empty cart", cart_path, method: :delete, data: {confirm: 'Are you sure?'}
