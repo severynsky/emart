@@ -11,13 +11,18 @@
         %p
           = prod_rec.product.category.title
         %p.red
-          = prod_rec.product.price
+          = prod_rec.total_price
         %p
           quantity:
           = prod_rec.quantity
         = link_to "more", incr_quantity_product_records_path(product_rec_id:(prod_rec.id)), method: :post
         |
         = link_to "less", decr_quantity_product_records_path(product_rec_id:(prod_rec.id)), method: :post
+  .clear
+  %h4.pull-right
+    Cart total:
+    %span.red
+      = @cart.total_cart_price.round(2)
   .clear
   %hr
   = link_to "empty cart", cart_path, method: :delete, data: {confirm: 'Are you sure?'}

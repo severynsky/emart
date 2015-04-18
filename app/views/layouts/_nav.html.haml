@@ -19,7 +19,7 @@
         - if @cart != nil
           - if !@cart.product_records.empty?
             %li
-              = link_to "cart", cart_path(session[:cart_id])
+              = link_to "cart #{@cart.total_cart_price.round(2)}", cart_path(session[:cart_id])
           - else
             %li.red
               = link_to "cart empty"

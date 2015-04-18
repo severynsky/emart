@@ -1,7 +1,8 @@
 class ProductRecordsController < ApplicationController
 	include CurrentCart
   before_action :set_cart, only: [:create]
-  before_action :find_product_record, only: [:create, :incr_quantity, :decr_quantity]
+  before_action :find_product_record, only: [:create]
+  before_action :find_product_record_quantity, only: [:incr_quantity, :decr_quantity]
 
   def create
   	product = Product.find(params[:product_id])
@@ -38,8 +39,12 @@ class ProductRecordsController < ApplicationController
 
   private
 
-  def find_product_record
+  def find_product_record_quantity
     @product_record = @cart.product_records.find(params[:product_rec_id])
+  end
+
+  def find_product_record
+    @product_record = @cart.product_records.find_by(product_id: (params[:product_id]))
   end
 
   def product_records_params
