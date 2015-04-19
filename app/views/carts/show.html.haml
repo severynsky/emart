@@ -4,18 +4,20 @@
   %hr
   %ul.product-records-list
     - @cart.product_records.each do |prod_rec|
-      %li.cart-item.col-xs-3
+      %li{class: "cart-item col-xs-3 #{prod_rec.id}"}
         = image_tag prod_rec.product.image.picture.url(:thumb), class: "thumbnail"
         %p
-          = prod_rec.product.title
+          = link_to prod_rec.product.title, product_path(prod_rec.product.id)
         %p.red
-          = prod_rec.total_price
+          = prod_rec.total_price.round(2)
         %p
           quantity:
           = prod_rec.quantity
         = link_to "more", incr_quantity_product_records_path(product_rec_id:(prod_rec.id)), method: :post
         |
         = link_to "less", decr_quantity_product_records_path(product_rec_id:(prod_rec.id)), method: :post
+        %hr
+        = link_to "remove", product_record_path(prod_rec), method: :delete, class:("btn btn-xs btn-danger"), data: {confirm: "Do Your really want to remove this item from Cart?"}
   .clear
   %hr
   %h4.pull-right
@@ -25,4 +27,4 @@
   .clear
   %hr
   = button_to "empty cart", cart_path, method: :delete, data: {confirm: 'Are you sure?'}, class: ("btn btn-danger pull-left")
-  = button_to "Proceed to checkout", cart_path, method: :delete, data: {confirm: 'Are you sure?'}, class: ("btn btn-success pull-right")
+  = link_to "Proceed to checkout", new_order_path, class: ("btn btn-success pull-right")

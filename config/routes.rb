@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :users_profile
   resources :carts
+  resources :orders
   resources :product_records do
     collection do
       post :incr_quantity

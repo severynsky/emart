@@ -1,5 +1,5 @@
 class Cart < ActiveRecord::Base
-	has_many :product_records, dependent: :destroy
+	has_many :product_records
 
   def total_cart_price
     arr = []

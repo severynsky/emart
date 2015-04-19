@@ -1,0 +1,11 @@
+%h3
+  This is order page
+%ul
+  - @order.product_records.each do |prod_rec|
+    %li
+      = prod_rec.product.title
+      |
+      = prod_rec.product.category.title
+      |
+      %span.red
+        = prod_rec.product.price

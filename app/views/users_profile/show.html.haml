@@ -1,10 +1,12 @@
-.col-xs-8.col-xs-offset-2
-  %h4
-    this is 
-    %b 
-      = @user.full_name
-    page
-    %hr
+%h4
+  this is
+  %b
+    = @user.full_name
+  page
+  %hr
+.col-xs-6
+  %h4 Your personal data:
+  %hr
   %p 
     email:
     = @user.email
@@ -23,3 +25,16 @@
   = link_to "log out", destroy_user_session_path, method: :delete 
   |
   = link_to "edit profile", edit_user_registration_path
+.col-xs-6
+  %h4 Orders:
+  %hr
+  -#- binding.pry
+  - if !@user.orders.empty?
+    %ul
+      - @user.orders.each do |ord|
+        %li
+          = link_to ord.created_at, order_path(ord)
+          |
+          = link_to "delete", order_path(ord), method: :delete, data: {confirm: "Are You sure?"}, class:("btn btn-xs btn-danger")
+  - else
+    %h5 No orders yet!

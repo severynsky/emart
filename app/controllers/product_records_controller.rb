@@ -35,6 +35,14 @@ class ProductRecordsController < ApplicationController
   end
 
   def destroy
+    ProductRecord.find(params[:id]).delete
+    # binding.pry
+    @cart = Cart.find_by(id: session[:cart_id])
+    if !@cart.product_records.empty?
+      redirect_to cart_path(@cart), notice: "Item was removed from cart"
+    else
+      redirect_to root_path
+    end
   end
 
   private

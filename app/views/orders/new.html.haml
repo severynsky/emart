@@ -1,0 +1,36 @@
+%h4
+  Order#
+  = @user.full_name
+.col-xs-6.order-show
+  -#= render "carts/product_records_list"
+  %ul
+  - @cart.product_records.each do |prod_red|
+    %li
+      %p
+        = prod_red.product.title
+      %p
+        = prod_red.product.price
+      %p
+        = prod_red.quantity
+.col-xs-6
+  %p
+    Your name:
+    %b
+      = @user.full_name
+  %p
+    Your adress:
+    %b
+      = @user.adress
+  %p
+    Your phone:
+    %b
+      = @user.phone
+  %p
+    Your email:
+    %b
+      = @user.email
+  = link_to "Edit Cart", cart_path(@cart),class:("btn btn-warning")
+  = link_to "Edit profile", edit_user_registration_path, class:("btn btn-info")
+  %hr
+  = bootstrap_form_for @order do |ord|
+    = ord.submit(class: "btn btn-success")

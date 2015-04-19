@@ -1,4 +1,10 @@
 .col-xs-10.col-xs-offset-1
+  .pull-right
+    = link_to 'back', products_path, class:("btn btn-default")
+    = link_to 'edit', edit_product_path, class:("btn btn-info")
+    = link_to 'delete', product_path, method: :delete, data: {confirm: "Are You sure?"}, class:("btn btn-danger")
+  %hr
+  .clear
   %h3
     = @product.title
     page
@@ -24,6 +30,4 @@
   = button_to "add to cart", product_records_path(product_id: @product), class: "btn btn-warning"
 -#- binding.pry
 .clear
-= link_to 'edit', edit_product_path
-= link_to 'back', products_path
-= link_to 'delete', product_path, method: :delete, data: {confirm: "Are You sure?"}
+%hr
