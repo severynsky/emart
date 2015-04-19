@@ -11,7 +11,7 @@
 
   .form-group
     = p.text_field :title
-    = p.bootsy_area :description, class: 'form-text-area'
+    = p.text_area :description, class: 'form-text-area'
     = p.text_field :price
     = p.text_field :sku
     = p.fields_for :image do |img|

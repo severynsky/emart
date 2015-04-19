@@ -47,10 +47,6 @@ GEM
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
     bootstrap_form (2.2.0)
-    bootsy (2.1.0)
-      carrierwave (~> 0.10)
-      mini_magick (~> 4.0)
-      remotipart (~> 1.2)
     builder (3.2.2)
     byebug (4.0.4)
       columnize (= 0.9.0)
@@ -216,7 +212,6 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass (~> 3.3.4)
   bootstrap_form
-  bootsy
   byebug
   coffee-rails (~> 4.1.0)
   devise
