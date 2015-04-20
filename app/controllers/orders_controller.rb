@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
     current_user.orders << @order
     @order.save
     @cart.product_records.delete_all
-    redirect_to order_path
+    redirect_to order_path(@order)
   end
 
   def show

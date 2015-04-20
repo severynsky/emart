@@ -27,4 +27,9 @@
   .clear
   %hr
   = button_to "empty cart", cart_path, method: :delete, data: {confirm: 'Are you sure?'}, class: ("btn btn-danger pull-left")
-  = link_to "Proceed to checkout", new_order_path, class: ("btn btn-success pull-right")
+  - if user_signed_in?
+    = link_to "Proceed to checkout", new_order_path, class: ("btn btn-success pull-right")
+  - else
+    %span.pull-right
+      Log in proceed checkout
+      = link_to "log in", new_user_session_path, class: ("btn btn-success ")

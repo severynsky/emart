@@ -3,15 +3,20 @@
   = @user.full_name
 .col-xs-6.order-show
   -#= render "carts/product_records_list"
-  %ul
-  - @cart.product_records.each do |prod_red|
-    %li
-      %p
-        = prod_red.product.title
-      %p
-        = prod_red.product.price
-      %p
-        = prod_red.quantity
+  %ul{style: "list-style-type: none"}
+    - @cart.product_records.each do |prod_rec|
+      %li{style: "width: 190px; border: 1px solid #f2f2f2; padding: 5px; margin: 5px; border-radius: 3px;"}
+        .pull-left
+          = image_tag prod_rec.product.image.picture.url(:thumb), class: "thumbnail"
+        .pull-right
+          %b
+            = prod_rec.product.title
+          %p
+            = prod_rec.product.price
+          %p
+            quantity:
+            = prod_rec.quantity
+        .clear
 .col-xs-6
   %p
     Your name:
@@ -29,8 +34,14 @@
     Your email:
     %b
       = @user.email
+  %p
+  .clear
   = link_to "Edit Cart", cart_path(@cart),class:("btn btn-warning")
   = link_to "Edit profile", edit_user_registration_path, class:("btn btn-info")
   %hr
-  = bootstrap_form_for @order do |ord|
-    = ord.submit(class: "btn btn-success")
+  - if @user.full_name == nil || @user.adress == nil || @user.phone == nil
+    %h4
+      fill all needed data in Your Profile
+  - else
+    = bootstrap_form_for @order do |ord|
+      = ord.submit(class: "btn btn-success")
